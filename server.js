@@ -6,7 +6,7 @@ const nodeCron = require('node-cron')
 
 const {dbConnect, closeDB } =  require('./_helper/dbConn')
 
-// const {redisConnect} = require('./_helper/init_redis')
+const {redisConnect } = require('./_helper/init_redis')
 
 
 const server = app.listen(config.server.port,   () => {
@@ -27,7 +27,7 @@ const cleanUp =  (eventType) => {
     server.close(() => {
       logger.info(`Server closed... Event : ${eventType} Recived`);
       closeDB();
-      // closeRedis()
+     
       process.exit(1);
     });
   } else {
